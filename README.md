@@ -34,10 +34,9 @@ anisse_outssakki@etu.u-bourgogne.fr
 
 ## Statuts action
 
-![example workflow](https://github.com/Naofel-eal/4A_SQR_CI-CD/workflows/curl.yml/badge.svg)
-![example workflow](https://github.com/Naofel-eal/4A_SQR_CI-CD/workflows/echoPush.yml/badge.svg)
-![example workflow](https://github.com/Naofel-eal/4A_SQR_CI-CD/workflows/pythonMain.yml/badge.svg)
-
+[![Curl command](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/curl.yml/badge.svg)](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/curl.yml)
+[![ECHO PUSH](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/echoPush.yml/badge.svg)](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/echoPush.yml)
+[![Execute main.py](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/pythonMain.yml/badge.svg)](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/pythonMain.yml)
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/naofel-el-alouani-83a947197/
