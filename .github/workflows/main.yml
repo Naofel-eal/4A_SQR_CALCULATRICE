@@ -1,0 +1,11 @@
+name: Curl command
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: cURL
+      uses: michaelrsweet/curl-action@main
+      with:
+        args: wttr.in/Moon
