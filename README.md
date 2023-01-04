@@ -34,9 +34,9 @@ anisse_outssakki@etu.u-bourgogne.fr
 
 ## Statuts action
 
-![Actions Status](https://github.com/Naofel-eal/4A_SQR_CI-CD/workflows/curl.yml/badge.svg)
-![Actions Status](https://github.com/Naofel-eal/4A_SQR_CI-CD/workflows/echoPush.yml/badge.svg)
-![Actions Status](https://github.com/Naofel-eal/4A_SQR_CI-CD/workflows/pythonMain.yml/badge.svg)
+![example workflow](https://github.com/Naofel-eal/4A_SQR_CI-CD/workflows/curl.yml/badge.svg)
+![example workflow](https://github.com/Naofel-eal/4A_SQR_CI-CD/workflows/echoPush.yml/badge.svg)
+![example workflow](https://github.com/Naofel-eal/4A_SQR_CI-CD/workflows/pythonMain.yml/badge.svg)
 
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
