@@ -7,7 +7,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
-      with:
-        python-version: 3.8
     - name: Run Python script
       run: python main.py
