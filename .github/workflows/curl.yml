@@ -5,7 +5,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: cURL
-      uses: michaelrsweet/curl-action@main
-      with:
-        args: wttr.in/Moon
+    - name: cd
+      uses: actions/checkout@v3
+      
+    - name: curl  
+      run: curl wttr.in/Moon
