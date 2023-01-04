@@ -26,8 +26,9 @@ naofel_el-alouani@etu.u-bourgogne.fr
 Anisse : 
 
 [![GitHub][github-shield2]][github-url1]   
-[![LinkedIn Anisse][linkedin-shield]][linkedin-url2]
+[![LinkedIn Anisse][linkedin-shield]][linkedin-url2]  
 anisse_outssakki@etu.u-bourgogne.fr
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -41,4 +42,4 @@ anisse_outssakki@etu.u-bourgogne.fr
 [github-shield2]: https://img.shields.io/github/followers/Naofel-eal?style=social
 [github-url]: https://github.com/Naofel-eal
 [github-url1]: https://github.com/AnisseO
-
+[mail-shield]: https://www.icone-png.com/png/10/9870.png
