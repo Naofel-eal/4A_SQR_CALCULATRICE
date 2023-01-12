@@ -12,17 +12,20 @@ transaction = [
     ('Omar', 'Anisse', '28/01/2023', 52)
 ]
 
-@app.route('/tuple', methods=['GET'])
-def get_tuple():
-	sort_dates(transaction)
+@app.route('/list', methods=['GET'])
+def list_tuple():
+	sort_dates()
 	response = "<h1>Transactions: </h1><ul>"
 	for transac in transaction:
 		response += "<li>" + transac[2] + " : " + transac[0] + " a viré " + str(transac[3]) + "€ à " + transac[1] +"</li>"
 	response += "</ul>"
 	return response
 
-def sort_dates(transaction):
-	return sorted(transaction, key=lambda x: (x[6:10], x[3:5], x[0:2]))
+def sort_dates():
+	#return sorted(transaction, key=lambda x: (x[6:10], x[3:5], x[0:2]))
+	sortedArr = []
+	for transac in transaction:
+		sortedArr.append(transac)
 
 if __name__ == '__main__':
     app.run()
