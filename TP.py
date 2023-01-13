@@ -34,23 +34,38 @@ def get_tuple():
 
 @app.route("/add", methods=['POST'])
 def add():
-    data = request.json
-    jsonP1 = data.get('name')
+    data = request.get_json()
+    P1firstname = data['P1']['firstname']
+    P1name = data['P1']['firstname']
+    P2firstname = data['P2']['firstname']
+    P2name = data['P2']['name']
+    date = data['date']
+    value = data['value']
     
-    print(data.get('firstname'))
-    transaction.appe
+    P1 = getPersonByNames(firstname=P1firstname, name=P1name)
+    P2 = getPersonByNames(firstname=P2firstname, name=P2name)
+
+    addTransaction(P1=P1, P2=P2, date=date, sum=value)
     return data
 
-def getPerson(firstname, name) -> Person:
+def getPersonByNames(firstname, name) -> Person:
     for person in people:
         if person.name == name and person.firstname == firstname:
             return person
-    people.append(Person(id=len(people), firstname=firstname, name=name, solde= 0.0))
+    
+    newPerson = Person(id=len(people), firstname=firstname, name=name, solde=0.0)
+    people.append(newPerson)
+    return newPerson
 
 def getPersonByID(id: int) -> Person:
     for person in people:
         if person.id == id:
             return person
+
+def addTransaction(P1 : Person, P2 : Person, sum : float, date : str):
+    tuple = (P1.id, P2.id, date, sum)
+    print(tuple)
+    transaction.append(tuple)
 
 def sort_dates():
 	transac = sorted(transaction, key=lambda x: datetime.strptime(x[2], '%d/%m/%Y'))
