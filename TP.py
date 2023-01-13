@@ -1,8 +1,11 @@
+#git stash; git pull; git stash pop;
+
 from flask import Flask, jsonify, request
 from datetime import datetime
 import json
 from types import SimpleNamespace
 from classes.Person import Person
+from utils.functions import *
 
 app = Flask(__name__)
 
@@ -23,15 +26,6 @@ people = [
     Person(id=2, firstname="Omar", name="AMANA", solde=1200)
 ]
 
-@app.route('/tuple', methods=['GET'])
-def get_tuple():
-	tran = sort_dates()
-	response = "<h1>Transactions: </h1><ul>"
-	for transac in tran:
-				response += "<li>" + transac[2] + " : " + getPersonByID(transac[0]).firstname + " a viré " + str(transac[3]) + "€ à " + getPersonByID(transac[1]).firstname +"</li>"
-	return response
-
-
 @app.route("/add", methods=['POST'])
 def add():
     data = request.get_json()
@@ -48,28 +42,14 @@ def add():
     addTransaction(P1=P1, P2=P2, date=date, sum=value)
     return data
 
-def getPersonByNames(firstname, name) -> Person:
-    for person in people:
-        if person.name == name and person.firstname == firstname:
-            return person
-    
-    newPerson = Person(id=len(people), firstname=firstname, name=name, solde=0.0)
-    people.append(newPerson)
-    return newPerson
+@app.route('/tuple', methods=['GET'])
+def get_tuple():
+	tran = sort_dates()
+	response = "<h1>Transactions: </h1><ul>"
+	for transac in tran:
+				response += "<li>" + transac[2] + " : " + getPersonByID(transac[0]).firstname + " a viré " + str(transac[3]) + "€ à " + getPersonByID(transac[1]).firstname +"</li>"
+	return response
 
-def getPersonByID(id: int) -> Person:
-    for person in people:
-        if person.id == id:
-            return person
-
-def addTransaction(P1 : Person, P2 : Person, sum : float, date : str):
-    tuple = (P1.id, P2.id, date, sum)
-    print(tuple)
-    transaction.append(tuple)
-
-def sort_dates():
-	transac = sorted(transaction, key=lambda x: datetime.strptime(x[2], '%d/%m/%Y'))
-	return transac
 	
 if __name__ == '__main__':
     app.run()
