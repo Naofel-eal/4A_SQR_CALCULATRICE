@@ -8,7 +8,8 @@ WORKDIR /app
 
 # Copier les fichiers nécessaires pour l'application
 #COPY requirements.txt .
-COPY src .
+COPY utils .
+COPY ressources .
 COPY TP.py .
 COPY requirements.txt .
 
