@@ -51,7 +51,6 @@ def uploadCSV():
 
 	
 if __name__ == '__main__':
-    app.run()
     if len(sys.argv) > 1:
         if sys.argv[1] == "check_syntax":
             print("Build [ OK ]")
