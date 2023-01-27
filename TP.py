@@ -41,17 +41,7 @@ def get_tuple():
 	sort_dates(transactions)
 	return stringifyTransactions(transactions)
 
-
-## E4 : Afficher le solde du compte de la personne
-@app.route('/solde/<int:id>', methods=['GET'])
-def show_solde(id):
-     person = next(getPersonByID(id), None)
-     if person:
-          return jsonify({'id': person.id, 'firstname': person.firstname, 'name':person.name,'solde': person.solde})
-     else:
-          return jsonify({'error': 'La personne est introuvable'})
-
- ## E3: Afficher une liste de toutes les transactions dans l’ordre chronologique liées à une personne
+## E3: Afficher une liste de toutes les transactions dans l’ordre chronologique liées à une personne
 @app.route('/transactions/<int:person_id>')
 def transactions_by_person(person_id):
     # Filtrer les transactions liées à la personne spécifique
@@ -69,7 +59,17 @@ def transactions_by_person(person_id):
         })
     
     transactions_final = sort_dates(transactions_list)
-    return stringifyTransactions(transactions_final)      
+    return stringifyTransactions(transactions_final)
+
+## E4 : Afficher le solde du compte de la personne
+@app.route('/solde/<int:id>', methods=['GET'])
+def show_solde(id):
+     person = next(getPersonByID(id), None)
+     if person:
+          return jsonify({'id': person.id, 'firstname': person.firstname, 'name':person.name,'solde': person.solde})
+     else:
+          return jsonify({'error': 'La personne est introuvable'})
+       
 
 ## E5: Importer des données depuis un fichier csv
 @app.route('/csv', methods=['POST'])
