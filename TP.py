@@ -1,6 +1,6 @@
 #git stash; git pull; git stash pop;
 
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from classes.Person import Person
 from utils.functions import *
 import sys
@@ -29,11 +29,23 @@ def add():
     addTransaction(P1=P1, P2=P2, date=date, sum=value)
     return data
 
+
 ## E2: Afficher une liste de toutes les transactions dans l’ordre chronologique
 @app.route('/list', methods=['GET'])
 def get_tuple():
 	transactions = sort_dates()
 	return stringifyTransactions()
+
+
+## E4 : Afficher le solde du compte de la personne
+@app.route('/solde/int:id', methods=['GET'])
+def show_solde(id):
+     person = next((p for p in people if p.id == id), None)
+     if person:
+          return jsonify({'id': person.id, 'firstname': person.firstname, 'name':person.name,'solde': person.solde})
+     else:
+          return jsonify({'error': 'La personne est introuvable'})
+       
 
 ## E5: Importer des données depuis un fichier csv
 @app.route('/csv', methods=['POST'])
