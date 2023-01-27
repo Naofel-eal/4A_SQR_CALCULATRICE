@@ -11,6 +11,8 @@ import os
 def home():
 	return '''<h1>Salut !</h1>'''
 
+## E1: Enregistrer une transaction
+## E3 : Afficher une liste des transactions dans l’ordre chronologique liées à une personne.
 @app.route("/add", methods=['POST'])
 def add():
     data = request.get_json()
@@ -27,11 +29,13 @@ def add():
     addTransaction(P1=P1, P2=P2, date=date, sum=value)
     return data
 
+## E2: Afficher une liste de toutes les transactions dans l’ordre chronologique
 @app.route('/list', methods=['GET'])
 def get_tuple():
 	transactions = sort_dates()
 	return stringifyTransactions()
 
+## E5: Importer des données depuis un fichier csv
 @app.route('/csv', methods=['POST'])
 def uploadCSV():
     data = []
