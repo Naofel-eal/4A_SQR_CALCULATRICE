@@ -1,18 +1,23 @@
 #git stash; git pull; git stash pop;
 
 from flask import Flask, request, jsonify
+
 from classes.Person import Person
 from utils.functions import *
 import sys
 import csv
 import os
 
+app = Flask(__name__)
+#api = Api(app)
+
+app.config['SWAGGER_UI_JSONEDITOR'] = True
+
 @app.route('/')
 def home():
 	return '''<h1>Salut !</h1>'''
 
 ## E1: Enregistrer une transaction
-## E3 : Afficher une liste des transactions dans l’ordre chronologique liées à une personne.
 @app.route("/add", methods=['POST'])
 def add():
     data = request.get_json()
