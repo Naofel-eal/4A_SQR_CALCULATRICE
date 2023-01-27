@@ -40,7 +40,7 @@ def get_tuple():
 ## E4 : Afficher le solde du compte de la personne
 @app.route('/solde/int:id', methods=['GET'])
 def show_solde(id):
-     person = next((p for p in people if p.id == id), None)
+     person = next(getPersonByID(id), None)
      if person:
           return jsonify({'id': person.id, 'firstname': person.firstname, 'name':person.name,'solde': person.solde})
      else:
