@@ -38,12 +38,32 @@ def add():
 ## E2: Afficher une liste de toutes les transactions dans l’ordre chronologique
 @app.route('/list', methods=['GET'])
 def get_tuple():
-	transactions = sort_dates()
-	return stringifyTransactions()
+	sort_dates(transactions)
+	return stringifyTransactions(transactions)
+
+## E3: Afficher une liste de toutes les transactions dans l’ordre chronologique liées à une personne
+@app.route('/transactions/<int:person_id>')
+def transactions_by_person(person_id):
+    # Filtrer les transactions liées à la personne spécifique
+    person_transactions = [transaction for transaction in transactions if transaction[0] == person_id or transaction[1] == person_id]
+    
+    # Créer une liste de dictionnaires pour les transactions
+    transactions_list = []
+    for transaction in person_transactions:
+        person = [person for person in people if person.id == transaction[0] or person.id == transaction[1]][0]
+        transactions_list.append({
+            'from': person.firstname + " " + person.name,
+            'to': person.firstname + " " + person.name,
+            'date': transaction[2],
+            'amount': transaction[3]
+        })
+    
+    transactions_final = sort_dates(transactions_list)
+    return stringifyTransactions(transactions_final)
 
 
 ## E4 : Afficher le solde du compte de la personne
-@app.route('/solde/int:id', methods=['GET'])
+@app.route('/solde/<int:id>', methods=['GET'])
 def show_solde(id):
      person = next(getPersonByID(id), None)
      if person:
@@ -68,7 +88,7 @@ def uploadCSV():
                     addTransaction(P1=getPersonByID(int(row[0])), P2=getPersonByID(int(row[1])), sum=row[3], date=row[2])
         else:
             print("No")
-    return stringifyTransactions()
+    return stringifyTransactions(transactions)
 
 	
 if __name__ == '__main__':

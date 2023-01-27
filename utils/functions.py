@@ -24,9 +24,9 @@ people = [
 ]
 
 # Fonction affichant les transactions pour les methodes GET en HTML
-def stringifyTransactions() -> str:
+def stringifyTransactions(transaction) -> str:
     response = "<h1>Transactions: </h1><ul>"
-    for transac in transactions:
+    for transac in transaction:
         response += "<li>" + transac[2] + " : " + getPersonByID(transac[0]).firstname + " a viré " + str(transac[3]) + "€ à " + getPersonByID(transac[1]).firstname +"</li>"
     return response
 
@@ -54,6 +54,6 @@ def addTransaction(P1 : Person, P2 : Person, sum : float, date : str):
     transactions.append(tuple)
 
 # Fonction de tri des dates par ordre chronologique (tri par année puis mois et enfin jour)
-def sort_dates():
-	transac = sorted(transactions, key=lambda x: datetime.strptime(x[2], '%d/%m/%Y'))
+def sort_dates(tran):
+	transac = sorted(tran, key=lambda x: datetime.strptime(x[2], '%d/%m/%Y'))
 	return transac
