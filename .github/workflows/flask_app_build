@@ -1,0 +1,15 @@
+name: Flask app build
+
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Flask app build
+      run: python TP.py check_syntax
