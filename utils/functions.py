@@ -50,6 +50,8 @@ def getPersonByID(id: int) -> Person:
 
 # Fonction ajout de transaction dans notre tableau
 def addTransaction(P1 : Person, P2 : Person, sum : float, date : str):
+    P1.solde -= sum
+    P1.solde += sum
     tuple = (P1.id, P2.id, date, sum, hash((P1, P2, sum)))
     transactions.append(tuple)
 

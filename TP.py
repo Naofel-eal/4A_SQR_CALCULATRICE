@@ -86,6 +86,26 @@ def uploadCSV():
             print("No")
     return stringifyTransactions(transactions)
 
+
+## E5: Importer des données depuis un fichier csv
+@app.route('/checkTransaction', methods=['POST'])
+def checkTransaction():
+    if request.method == 'POST':
+        data = request.get_json()
+        P1firstname = data['P1']['firstname']
+        P1name = data['P1']['firstname']
+        P2firstname = data['P2']['firstname']
+        P2name = data['P2']['name']
+        date = data['date']
+        value = data['value']
+        P1 = getPersonByNames(firstname=P1firstname, name=P1name)
+        P2 = getPersonByNames(firstname=P2firstname, name=P2name)
+        
+        for transaction in transactions:
+            if hash(getPersonByID(transaction[0]) + getPersonByID(transaction[1] + transaction[3])) == hash(P1 + P2 + value):
+                return "<h1> TRANSACTION VALIDE </h1>"
+    return "<h1> TRANSACTION INVALIDE </h1>"
+
 	
 if __name__ == '__main__':
     if len(sys.argv) > 1:
