@@ -1,7 +1,6 @@
 #git stash; git pull; git stash pop;
 
 from flask import Flask, request, jsonify
-
 from classes.Person import Person
 from utils.functions import *
 import sys
@@ -42,7 +41,7 @@ def get_tuple():
 	return stringifyTransactions(transactions)
 
 ## E3: Afficher une liste de toutes les transactions dans l’ordre chronologique liées à une personne
-@app.route('/transactions/<int:person_id>')
+@app.route('/transactions/<int:person_id>', methods=['GET'])
 def transactions_by_person(person_id):
     # Filtrer les transactions liées à la personne spécifique
     person_transactions = [transaction for transaction in transactions if transaction[0] == person_id or transaction[1] == person_id]
