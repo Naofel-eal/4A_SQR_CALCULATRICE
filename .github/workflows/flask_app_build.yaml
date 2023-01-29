@@ -11,5 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v3
     - name: Flask app build
       run: python TP.py check_syntax
