@@ -15,7 +15,7 @@ OUTSSAKKI Anisse et EL ALOUANI Naofel
 
 **Objectif :** Créer une API Flask pour de la gestion CRUD d’un système de transaction
 
-[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+**Langage :** [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 **Sujet choisi:** Sujet guidé - Un chemin tout tracé
 
