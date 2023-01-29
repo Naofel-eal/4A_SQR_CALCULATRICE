@@ -14,7 +14,7 @@ app.config['SWAGGER_UI_JSONEDITOR'] = True
 
 @app.route('/')
 def home():
-	return '''<h1>Salut !</h1>'''
+	return '''<h1>Allez sur la route /list !</h1>'''
 
 ## E1: Enregistrer une transaction
 @app.route("/add", methods=['POST'])
@@ -32,7 +32,6 @@ def add():
 
     addTransaction(P1=P1, P2=P2, date=date, sum=value)
     return data
-
 
 ## E2: Afficher une liste de toutes les transactions dans l’ordre chronologique
 @app.route('/list', methods=['GET'])
@@ -73,7 +72,6 @@ def show_solde(id):
 ## E5: Importer des données depuis un fichier csv
 @app.route('/csv', methods=['POST'])
 def uploadCSV():
-    data = []
     if request.method == 'POST':
         if request.files:
             file = request.files['transactions']
