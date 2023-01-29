@@ -102,7 +102,7 @@ def checkTransaction():
         P2 = getPersonByNames(firstname=P2firstname, name=P2name)
         
         for transaction in transactions:
-            if hash(getPersonByID(transaction[0]) + getPersonByID(transaction[1] + transaction[3])) == hash(P1 + P2 + value):
+            if hash(getPersonByID(transaction[0]) + getPersonByID(transaction[1] + transaction[3] + transaction[2])) == hash(P1 + P2 + value + date):
                 return "<h1> TRANSACTION VALIDE </h1>"
     return "<h1> TRANSACTION INVALIDE </h1>"
 

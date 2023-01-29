@@ -52,7 +52,7 @@ def getPersonByID(id: int) -> Person:
 def addTransaction(P1 : Person, P2 : Person, sum : float, date : str):
     P1.solde -= sum
     P1.solde += sum
-    tuple = (P1.id, P2.id, date, sum, hash((P1, P2, sum)))
+    tuple = (P1.id, P2.id, date, sum, hash((P1, P2, sum + date)))
     transactions.append(tuple)
 
 # Fonction de tri des dates par ordre chronologique (tri par année puis mois et enfin jour)
