@@ -103,6 +103,9 @@ paths:
   /transactions/{person_id}:
     get:
       description: "Afficher une liste de toutes les transactions dans l’ordre chronologique liées à une personne"
+      operationId: "transactions_by_person"
+      tags:
+        - "Transactions"
       parameters:
         - name: "person_id"
           in: "path"
@@ -111,63 +114,86 @@ paths:
           type: "integer"
       responses:
         200:
-          description: "Liste des transactions triées dans l’ordre chronologique pour une personne"
-          content:
-            application/json:
-              schema:
-                type: "array"
-                items:
-                  type: "object"
-                  properties:
-                    from:
-                      type: "string"
-                      description: "Nom de la personne qui a effectué la transaction"
-                    to:
-                      type: "string"
-                      description: "Nom de la personne à qui la transaction a été effectuée"
-                    date:
-                      type: "string"
-                      format: "date-time"
-                      description: "Date de la transaction"
-                    amount:
-                      type: "number"
-                      description: "Montant de la transaction"
+          description: "Liste des transactions triées dans l’ordre chronologique pour une personne" 
+          schema:
+            type: "array"
+            items:
+              type: "object"
+              properties:
+                from:
+                  type: "string"
+                  description: "Nom de la personne qui a effectué la transaction"
+                to:
+                  type: "string"
+                  description: "Nom de la personne à qui la transaction a été effectuée"
+                date:
+                  type: "string"
+                  format: "date"
+                  description: "Date de la transaction"
+                amount:
+                  type: "number"
+                  description: "Montant de la transaction"
         400:
           description: "Erreur dans la requête"
 
   /solde/{id}:
     get:
       description: "Afficher le solde du compte de la personne"
+      operationId: "show_solde"
       parameters:
         - in: "path"
           name: "id"
-          schema:
-            type: "integer"
+          type: "integer"
           required: true
           description: "ID de la personne"
       responses:
         200:
           description: "Information sur le solde du compte"
-          content:
-            application/json:
-              schema:
-                type: "object"
-                properties:
-                  id:
-                    type: "integer"
-                  firstname:
-                    type: "string"
-                  name:
-                    type: "string"
-                  solde:
-                    type: "integer"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "integer"
+                description: "ID de la personne"
+              firstname:
+                type: "string"
+                description: "Nom de la personne"
+              name:
+                type: "string"
+                description: "Prénom de la personne"
+              solde:
+                type: "integer"
+                description: "Solde de la personne"
         404:
           description: "La personne est introuvable"
-          content:
-            application/json:
-              schema:
-                type: "object"
-                properties:
-                  error:
-                    type: "string"
+          schema:
+            type: "object"
+            properties:
+              error:
+                type: "string"
+                description: "Error message"
 
+  /csv:
+    post:
+      tags:
+        - "Import CSV Data"
+      summary: "Importer des données depuis un fichier csv"
+      description: "Importer des données depuis un fichier csv"
+      operationId: "uploadCSV"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "transactions"
+          description: "Fichier csv à importer"
+          in: "formData"
+          required: true
+          type: "file"
+      consumes:
+        - "multipart/form-data"
+      responses:
+        200:
+          description: "Les transactions ont été importées avec succès"
+          schema:
+            type: "string"
+        400:
+          description: "Une erreur s'est produite lors de l'import des transactions"
