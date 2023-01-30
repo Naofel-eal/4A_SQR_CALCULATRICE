@@ -135,4 +135,39 @@ paths:
         400:
           description: "Erreur dans la requête"
 
+  /solde/{id}:
+    get:
+      description: "Afficher le solde du compte de la personne"
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "integer"
+          required: true
+          description: "ID de la personne"
+      responses:
+        200:
+          description: "Information sur le solde du compte"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  id:
+                    type: "integer"
+                  firstname:
+                    type: "string"
+                  name:
+                    type: "string"
+                  solde:
+                    type: "integer"
+        404:
+          description: "La personne est introuvable"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  error:
+                    type: "string"
 
