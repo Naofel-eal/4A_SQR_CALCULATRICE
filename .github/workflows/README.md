@@ -4,4 +4,9 @@
 
 Dans ce dossier, vous retrouverez les différents workflows utilisés, nous avons plusieurs GitHub Actions: 
 
-* Utiliser le fichier [Dockerfile](https://github.com/Naofel-eal/4A_SQR_CI-CD/blob/main/Dockerfile) pour créer une image Docker
+* Une déclenchée à chaque changement pour builder l’application  ([flask_app_build.yaml](https://github.com/Naofel-eal/4A_SQR_CI-CD/blob/main/.github/workflows/flask_app_build.yaml))
+
+* Une déclenchée manuellement pour builder et dockeriser et pousser l’image de l’API ([build_dockerfile.yml](https://github.com/Naofel-eal/4A_SQR_CI-CD/blob/main/.github/workflows/build_dockerfile.yml))
+
+* Une déclenchée pour chaque tag semver pour builder et dockeriser et pousser l’image de l’API avec en tag la version semver spécifiée ([Build_and_Push_to_GCR.yaml](https://github.com/Naofel-eal/4A_SQR_CI-CD/blob/main/.github/workflows/Build_and_Push_to_GCR.yaml))
+
