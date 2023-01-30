@@ -102,7 +102,37 @@ paths:
 
   /transactions/{person_id}:
     get:
-      tags:
-        - "Transaction"
-      summary: "Afficher les transactions liées à une personne"
-      description: "Afficher une liste de toutes les transactions liées à une personne dans
+      description: "Afficher une liste de toutes les transactions dans l’ordre chronologique liées à une personne"
+      parameters:
+        - name: "person_id"
+          in: "path"
+          required: true
+          description: "ID de la personne"
+          type: "integer"
+      responses:
+        200:
+          description: "Liste des transactions triées dans l’ordre chronologique pour une personne"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  type: "object"
+                  properties:
+                    from:
+                      type: "string"
+                      description: "Nom de la personne qui a effectué la transaction"
+                    to:
+                      type: "string"
+                      description: "Nom de la personne à qui la transaction a été effectuée"
+                    date:
+                      type: "string"
+                      format: "date-time"
+                      description: "Date de la transaction"
+                    amount:
+                      type: "number"
+                      description: "Montant de la transaction"
+        400:
+          description: "Erreur dans la requête"
+
+
