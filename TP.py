@@ -1,7 +1,6 @@
 #git stash; git pull; git stash pop;
 
 from flask import Flask, request, jsonify
-
 from classes.Person import Person
 from utils.functions import *
 import sys
@@ -9,9 +8,6 @@ import csv
 import os
 
 app = Flask(__name__)
-#api = Api(app)
-
-app.config['SWAGGER_UI_JSONEDITOR'] = True
 
 @app.route('/')
 def home():
@@ -33,6 +29,7 @@ def add():
 
     addTransaction(P1=P1, P2=P2, date=date, sum=value)
     return data
+
 
 ## E2: Afficher une liste de toutes les transactions dans l’ordre chronologique
 @app.route('/list', methods=['GET'])
@@ -73,6 +70,7 @@ def show_solde(id):
 ## E5: Importer des données depuis un fichier csv
 @app.route('/csv', methods=['POST'])
 def uploadCSV():
+    data = []
     if request.method == 'POST':
         if request.files:
             file = request.files['transactions']
@@ -86,26 +84,6 @@ def uploadCSV():
         else:
             print("No")
     return stringifyTransactions(transactions)
-
-
-## E5: Importer des données depuis un fichier csv
-@app.route('/checkTransaction', methods=['POST'])
-def checkTransaction():
-    if request.method == 'POST':
-        data = request.get_json()
-        P1firstname = data['P1']['firstname']
-        P1name = data['P1']['firstname']
-        P2firstname = data['P2']['firstname']
-        P2name = data['P2']['name']
-        date = data['date']
-        value = data['value']
-        P1 = getPersonByNames(firstname=P1firstname, name=P1name)
-        P2 = getPersonByNames(firstname=P2firstname, name=P2name)
-        
-        for transaction in transactions:
-            if hash(getPersonByID(transaction[0]) + getPersonByID(transaction[1] + transaction[3] + transaction[2])) == hash(P1 + P2 + value + date):
-                return "<h1> TRANSACTION VALIDE </h1>"
-    return "<h1> TRANSACTION INVALIDE </h1>"
 
 	
 if __name__ == '__main__':
