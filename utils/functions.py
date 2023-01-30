@@ -10,10 +10,10 @@ app.config['FILE_UPLOADS'] = os.path.dirname(os.path.abspath(__file__))
 
 # Notre liste de transactions de type tuple
 transactions = [
-    (0, 1, '14/02/2023', 380),
-    (1, 0, '28/01/2023', 52),
-    (1, 2, '11/08/2022', 12),
-    (0, 1, '16/12/2022', 33)
+    """(0, 1, '14/02/2023 15:56', 380),
+    (1, 0, '28/01/2023 13:22', 52),
+    (1, 2, '11/08/2022 19:50', 12),
+    (0, 1, '16/12/2022 10:03', 33)"""
 ]
 
 # Notre liste de personnes de type tuple
@@ -48,9 +48,11 @@ def getPersonByID(id: int) -> Person:
     print("Person not found !")
     return None
 
-# Fonction ajout de transaction dans notre tuple
+# Fonction ajout de transaction dans notre tableau
 def addTransaction(P1 : Person, P2 : Person, sum : float, date : str):
-    tuple = (P1.id, P2.id, date, sum)
+    P1.solde -= sum
+    P1.solde += sum
+    tuple = (P1.id, P2.id, date, sum, hash((P1, P2, sum + date)))
     transactions.append(tuple)
 
 # Fonction de tri des dates par ordre chronologique (tri par année puis mois et enfin jour)
