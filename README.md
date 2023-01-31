@@ -19,6 +19,8 @@ OUTSSAKKI Anisse et EL ALOUANI Naofel
 
 **Sujet choisi:** Sujet guidé - Un chemin tout tracé
 
+Nous avons choisi ce sujet car nous avons préféré être encadré. En effet, ceci est nouveau pour nous et nous n'aurons pas pu progressé sans être un minimum guidé
+
 ## Contact
 
 **Naofel** : 
@@ -38,11 +40,9 @@ anisse_outssakki@etu.u-bourgogne.fr
 
 ## Statuts action
 
-[![Curl command](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/curl.yml/badge.svg)](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/curl.yml)
+[![Pull Request Workflow](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/blank.yml/badge.svg)](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/blank.yml)
 
-[![ECHO PUSH](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/echoPush.yml/badge.svg)](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/echoPush.yml)
-
-[![Execute main.py](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/pythonMain.yml/badge.svg)](https://github.com/Naofel-eal/4A_SQR_CI-CD/actions/workflows/pythonMain.yml)
+[Lien](https://github.com/Naofel-eal/4A_SQR_CI-CD/blob/main/.github/workflows/README.md) vers les badges des résultats des builds des dernières CI exécutées
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
