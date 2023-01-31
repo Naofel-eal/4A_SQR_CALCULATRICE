@@ -68,6 +68,23 @@ def show_solde(id):
        
 
 ## E5: Importer des données depuis un fichier csv
+@app.route('/csv', methods=['POST'])
+def uploadCSV():
+    if request.method == 'POST':
+        if request.files:
+            file = request.files['transactions']
+            filepath = os.path.join(app.config['FILE_UPLOADS'], file.filename)
+            file.save(filepath)
+
+            with open(filepath) as csv_file:
+                reader = csv.reader(csv_file)
+                for row in reader:
+                    addTransaction(P1=getPersonByID(int(row[0])), P2=getPersonByID(int(row[1])), sum=row[3], date=row[2])
+        else:
+            print("No")
+    return stringifyTransactions(transactions)	
+	
+## E6: vérifier une transaction
 @app.route('/checkTransaction', methods=['POST'])
 def checkTransaction():
     if request.method == 'POST':
