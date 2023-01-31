@@ -11,10 +11,23 @@ basePath: "/"
 schemes:
   - "http"
 paths:
+  /:
+    get:
+      tags:
+        - "Home"
+      summary: "Accueil"
+      description: "Page d'accueil"
+      operationId: "home"
+      responses:
+        '200':
+          description: "Allez sur la route /list !"
+        '400':
+          description: "Erreur dans la requête"
+         
   /add:
     post:
       tags:
-        - "Transaction"
+        - "Transactions"
       summary: "Enregistrer une transaction"
       description: "Enregistrer une transaction entre deux personnes à une certaine date et pour une certaine valeur"
       operationId: "addTransaction"
@@ -140,6 +153,8 @@ paths:
     get:
       description: "Afficher le solde du compte de la personne"
       operationId: "show_solde"
+      tags:
+        - "Solde"
       parameters:
         - in: "path"
           name: "id"
