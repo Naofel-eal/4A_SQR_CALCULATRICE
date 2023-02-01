@@ -19,15 +19,73 @@ OUTSSAKKI Anisse et EL ALOUANI Naofel
 
 **Sujet choisi:** Sujet guidé - Un chemin tout tracé
 
-Nous avons choisi ce sujet car nous avons préféré être encadré. En effet, ceci est nouveau pour nous et nous n'aurons pas pu progressé sans être un minimum guidé
+Nous avons choisi ce sujet car nous avons préféré être encadré. En effet, ceci est nouveau pour nous et nous n'aurons pas pu progressé sans être un minimum guidé.
 
-**Détail de la route pour upload un .csv** 
-Lors de l'utilisation de cette route de l'API, un fichier .csv peut être transmis afin d'ajouter plusieurs transactions en une seule fois.
-Le fichier csv ne doit pas comporter d'en tête et chaque ligne doit respecter le format suivant: 
-- 1ère cellule : identifiant de l'utilisateur qui envoit l'argent
-- 2ème cellule : identifiant de l'utilisateur qui recoit l'argent
-- 3ème cellule : date de la transaction
-- 4ème cellule : somme de la transaction
+
+## Technologie utilisée
+### Flask 
+Flask est un micro framework web gratuit et open-source pour Python conçu pour aider les développeurs à construire des applications web sécurisées, évolutives et maintenables. Flask est basé sur Werkzeug et utilise Jinja2 comme moteur de template. Il nécessite donc d'avoir déjà Python3 installé.
+
+### Installation :
+Que ce soit sur Windows ou Linux, la commande permettant son installation est : 
+
+```
+pip install flask
+```
+
+On verifie ensuite les versions en cours:
+
+```
+python -m flask --version
+```
+Dans notre cas, voici les versions que nous avons :
+```
+Python 3.8.10
+Flask 2.2.2
+Werkzeug 2.2.2
+```
+
+### Utilisation :
+Après avoir créer notre API dans un fichier Python nous pouvons effectuer des tests unitaires en demarrant le serveur flask ainsi :
+
+**Sur Linux**
+```
+export FLASK_APP=TP.py
+export FLASK_ENV=development
+flask run
+```
+**Sur Windows**
+```
+set FLASK_APP=TP.py
+set FLASK_ENV=development
+flask run
+```
+Ensuite, depuis notre navigateur web, un logiciel tel qu'insomnia ou en ligne de commande nous pouvons tester notre API avec les commandes suivantes.
+Pour notre premier endpoint utilisant une methode POST:
+```
+curl -X POST http://localhost:5000/add
+```
+
+Ou encore celle-ci, pour notre quatrième route utilisant une méthode GET et intégrant un ID dans l'URL:
+```
+curl -X GET http://localhost:5000/solde/1
+```
+
+Mais aussi, celle notre dernière route important les données d'un fichier csv:
+```
+curl -X POST -F 'transactions=@transactions.csv' http://localhost:5000/csv
+```
+
+### Algorithme de hachage
+Nous avons choisi la fonction de hachage **SHA-256** dans nos transactions qui est notamment utilisé par Bitcoin pour garantir l'intégrité des informations stockées dans un bloc. Desormais, le modèle des transactions sera composé ainsi: (P1, P2, t, s, h), où **s** est égal à la somme d’argent transférée de la personne **P1** à la personne **P2** à l’instant **t** et **h** correspond au hash de P1, de P2, et s.
+SHA-256 est l'un des plus utilisés en raison de son équilibre entre la sécurité et le coût de calcul de la génération, car il s'agit d'un algorithme très efficace pour la résistance élevée aux collisions dont il dispose. Il garantit que cet algorithme sera sûr pendant très longtemps, au moins 20 ans.
+
+Prenons l'exemple suivant: P1(id=1) envoie 1 500 euros à P2(id=2), en suivant la structure de notre fichier csv voici ci-dessous le resultat de la fonction de hachage de SHA-256
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/93181410/216112844-c86df570-61a5-4ea3-bd50-6d74ae75c005.png" width="400"/>
+</p>
+
+
 
 ## Contact
 
