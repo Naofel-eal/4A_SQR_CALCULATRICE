@@ -32,8 +32,8 @@ jobs:
         uses: docker/build-push-action@v3.2.0
         with:
           # Emplacement du Dockerfile
-          file: tds/correction_td3-4/Dockerfile
+          file: ./Dockerfile
           tags: eu.gcr.io/esirem/4a_sqr/outssakki_elalouani/4a_sqr_ci-cd:${{ github.ref_name }}
           # Emplacement des fichiers 
-          context: tds/correction_td3-4
+          context: .
           push: true
