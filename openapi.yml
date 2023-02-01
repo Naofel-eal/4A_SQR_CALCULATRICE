@@ -89,7 +89,7 @@ paths:
   /list:
     get:
       tags:
-        - "Transaction"
+        - "Transactions"
       summary: "Afficher une liste de toutes les transactions"
       description: "Afficher une liste de toutes les transactions dans l'ordre chronologique"
       operationId: "getTransactionList"
@@ -117,6 +117,7 @@ paths:
     get:
       description: "Afficher une liste de toutes les transactions dans l’ordre chronologique liées à une personne"
       operationId: "transactions_by_person"
+      summary: "Afficher une liste de transactions dans l’ordre chronologique pour une personne"
       tags:
         - "Transactions"
       parameters:
@@ -151,8 +152,9 @@ paths:
 
   /solde/{id}:
     get:
-      description: "Afficher le solde du compte de la personne"
+      description: "Afficher le solde du compte de la personne en fonction de son ID"
       operationId: "show_solde"
+      summary: "Afficher le solde du compte de la personne"
       tags:
         - "Solde"
       parameters:
@@ -212,3 +214,46 @@ paths:
             type: "string"
         400:
           description: "Une erreur s'est produite lors de l'import des transactions"
+          
+
+  /checkTransaction:
+    post:
+      tags:
+        - "Transactions"
+      summary: "Vérifier la validité d'une transaction"
+      description: "Indique si une transaction est valide ou non"
+      parameters:
+        - name: "data"
+          in: "body"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              P1:
+                type: "object"
+                properties:
+                  firstname:
+                    type: "string"
+                  name:
+                    type: "string"
+              P2:
+                type: "object"
+                properties:
+                  firstname:
+                    type: "string"
+                  name:
+                    type: "string"
+              date:
+                type: "string"
+              value:
+                type: "number"
+      responses:
+        200:
+          description: "TRANSACTION VALIDE"
+          schema:
+            type: "string"
+        400:
+          description: "TRANSACTION INVALIDE"
+          schema:
+            type: "string"
+
