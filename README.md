@@ -21,6 +21,14 @@ OUTSSAKKI Anisse et EL ALOUANI Naofel
 
 Nous avons choisi ce sujet car nous avons préféré être encadré. En effet, ceci est nouveau pour nous et nous n'aurons pas pu progressé sans être un minimum guidé
 
+**Détail de la route pour upload un .csv** 
+Lors de l'utilisation de cette route de l'API, un fichier .csv peut être transmis afin d'ajouter plusieurs transactions en une seule fois.
+Le fichier csv ne doit pas comporter d'en tête et chaque ligne doit respecter le format suivant: 
+- 1ère cellule : identifiant de l'utilisateur qui envoit l'argent
+- 2ème cellule : identifiant de l'utilisateur qui recoit l'argent
+- 3ème cellule : date de la transaction
+- 4ème cellule : somme de la transaction
+
 ## Contact
 
 **Naofel** : 
