@@ -110,7 +110,7 @@ anisse_outssakki@etu.u-bourgogne.fr
 
 [Lien](https://github.com/Naofel-eal/4A_SQR_CI-CD/blob/main/.github/workflows/README.md) vers les badges des résultats des builds des dernières CI exécutées
 
-[![badge_fin][img_valide][https://github.com/Naofel-eal/4A_SQR_CI-CD]]
+[![badge_fin][img_valide]][https://github.com/Naofel-eal/4A_SQR_CI-CD]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
