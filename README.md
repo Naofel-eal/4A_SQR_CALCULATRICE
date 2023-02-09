@@ -110,8 +110,11 @@ anisse_outssakki@etu.u-bourgogne.fr
 
 [Lien](https://github.com/Naofel-eal/4A_SQR_CI-CD/blob/main/.github/workflows/README.md) vers les badges des résultats des builds des dernières CI exécutées
 
+[![badge_fin][img_valide][https://github.com/Naofel-eal/4A_SQR_CI-CD]]
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+[img-valide]: https://cdn.pixabay.com/photo/2017/05/03/23/39/ok-2282499_960_720.png
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/naofel-el-alouani-83a947197/
 [linkedin-url2]: https://www.linkedin.com/in/anisse-outssakki-101926199/
